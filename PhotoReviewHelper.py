@@ -4,7 +4,7 @@ import os
 
 #Edit the variables below for your photos:
 imgNum = 1 #Number the images start at, mine started at 1
-imagePath = "C:/ExamplePath/Photos" #Full path of the folder the images are in, folders and file names cannot have spaces, AND MAKE SURE YOU ARE USING FOREWARD SLASHES!!
+imagePath = "C:/ExamplePath/Photos" #Full path of the folder the images are in, folders and file names cannot have spaces
 prefix = "photo" #Prefix to every image number(as in the "photo" in photo1), leave blank if there is none
 suffix = "" #Suffix to every image (as in the "photo" in 1photo), leave blank if there is none
 fileExtension = "jpg" #The file extension of all of your photos
@@ -16,7 +16,13 @@ renameTo = "_GOOD" #The suffix that pressing m will add to the file name
 imagePath = list(imagePath) #This bit ensures that the file path will work whether or not there is a / at the end of the path, so "C:/ExamplePath/Photos/"
 if imagePath[len(imagePath)-1] == "/":
     imagePath.pop()
+for x in range(len(imagePath)): #This corrects for backslashes used in the image path
+    if imagePath[x] == "\\":
+        imagePath[x] = "/"
 imagePath = ''.join(imagePath)
+
+
+
 
 
 fullPath = "{}/{}{}{}.{}".format(imagePath, prefix,  str(imgNum), suffix, fileExtension) #Creates the full path for each photo
