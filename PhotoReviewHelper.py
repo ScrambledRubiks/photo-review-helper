@@ -6,7 +6,7 @@ import os
 imgNum = 1 #Number the images start at, mine started at 1
 imagePath = "C:/ExamplePath/Photos" #Full path of the folder the images are in, folders and file names cannot have spaces, AND MAKE SURE YOU ARE USING FOREWARD SLASHES!!
 prefix = "photo" #Prefix to every image number(as in the "photo" in photo1), leave blank if there is none
-suffix = "" #Suffix to every image as in the "photo" in 1photo), leave blank if there is none
+suffix = "" #Suffix to every image (as in the "photo" in 1photo), leave blank if there is none
 fileExtension = "jpg" #The file extension of all of your photos
 horizontalRes = 1600 #Horizontal resolution for the photos' display, make sure this is a whole number!
 verticalRes = 900 #Vertical resolution for the photos' display, make sure this is a whole number!
