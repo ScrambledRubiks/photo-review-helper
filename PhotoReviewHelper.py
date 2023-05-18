@@ -1,0 +1,82 @@
+import tkinter as tk
+from PIL import Image, ImageTk
+import os
+
+#Edit the variables below for your photos:
+imgNum = 1 #Number the images start at, mine started at 1
+imagePath = "C:/ExamplePath/Photos" #Full path of the folder the images are in, folders and file names cannot have spaces, AND MAKE SURE YOU ARE USING FOREWARD SLASHES!!
+prefix = "photo" #Prefix to every image, leave blank if there is none
+suffix = "" #Suffix to every image, leave blank if there is none
+fileExtension = "jpg" #The file extension of all of your photos
+horizontalRes = int(2544/2) #Horizontal resolution for the photos' display, make sure this is an int!
+verticalRes = int(1696/2) #Vertical resolution for the photos' display, make sure this is an int!
+renameTo = "_GOOD" #The suffix that pressing m will add to the file name
+#Once these are done you're all set!
+
+imagePath = list(imagePath)
+if imagePath[len(imagePath)-1] == "/":
+    imagePath.pop()
+imagePath = ''.join(imagePath)
+
+
+fullPath = "{}/{}{}{}.{}".format(imagePath, prefix,  str(imgNum), suffix, fileExtension)
+
+win = tk.Tk()
+win.title("Photo Review Helper")
+path = list(os.path.dirname(os.path.abspath(__file__)))
+for x in range(len(path)):
+    if path[x] == "\\":
+        path[x] = "/"
+path = ''.join(path)
+
+icon = tk.PhotoImage(file=f"{path}/ScrambledRubiks-Emblem.png")
+win.iconphoto(True,icon)
+image1 = Image.open(fullPath)
+image1 = image1.resize((int(2544/2), int(1696/2)), Image.LANCZOS)
+ph = ImageTk.PhotoImage(image1)
+
+label1 = tk.Label(image=ph)
+label1.image = image1
+
+def key_pressed(event):
+    global imgNum
+    global image1
+    global fullPath
+    global label1
+    global ph
+    global imagePath
+    global prefix
+    global suffix
+    global fileExtension
+    global horizontalRes
+    global verticalRes
+    if event.char == ",":
+        imgNum -= 1
+        fullPath = "{}/{}{}{}.{}".format(imagePath, prefix,  str(imgNum), suffix, fileExtension)
+        image1 = Image.open(fullPath)
+        image1 = image1.resize((horizontalRes, verticalRes), Image.LANCZOS)
+        ph = ImageTk.PhotoImage(image1)
+            
+        label1.configure(image=ph)
+        label1.image = ph
+    elif event.char == ".":
+        imgNum += 1 
+        print(imgNum)
+        fullPath = "{}/{}{}{}.{}".format(imagePath, prefix,  str(imgNum), suffix, fileExtension)
+        image1 = Image.open(fullPath)
+        image1 = image1.resize((int(2544/2), int(1696/2)), Image.LANCZOS)
+        ph = ImageTk.PhotoImage(image1)
+            
+        label1.configure(image=ph)
+        label1.image = ph
+
+    elif event.char == "m":
+        pathNoFileExtension = "{}/{}{}{}".format(imagePath, prefix,  str(imgNum), suffix)
+        name = pathNoFileExtension + renameTo + "." + fileExtension
+        os.rename(fullPath, name)
+
+
+# Position image
+label1.place(x=0, y=0)
+win.bind("<Key>",key_pressed)
+win.mainloop()
