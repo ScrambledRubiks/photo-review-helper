@@ -8,8 +8,8 @@ imagePath = "C:/ExamplePath/Photos" #Full path of the folder the images are in, 
 prefix = "photo" #Prefix to every image, leave blank if there is none
 suffix = "" #Suffix to every image, leave blank if there is none
 fileExtension = "jpg" #The file extension of all of your photos
-horizontalRes = int(2544/2) #Horizontal resolution for the photos' display, make sure this is an int!
-verticalRes = int(1696/2) #Vertical resolution for the photos' display, make sure this is an int!
+horizontalRes = 1600 #Horizontal resolution for the photos' display, make sure this is an integer!
+verticalRes = 900 #Vertical resolution for the photos' display, make sure this is an integer!
 renameTo = "_GOOD" #The suffix that pressing m will add to the file name
 #Once these are done you're all set!
 
@@ -23,6 +23,7 @@ fullPath = "{}/{}{}{}.{}".format(imagePath, prefix,  str(imgNum), suffix, fileEx
 
 win = tk.Tk()
 win.title("Photo Review Helper")
+win.geometry("1600x900")
 path = list(os.path.dirname(os.path.abspath(__file__))) #This stuff just gets the filepath for the icon
 for x in range(len(path)):
     if path[x] == "\\":
