@@ -2,28 +2,33 @@ import tkinter as tk
 from PIL import Image, ImageTk
 import os
 
-#Edit the variables below for your photos:
-imgNum = 1 #Number the images start at, mine started at 1
-imagePath = "C:/ExamplePath/Photos" #Full path of the folder the images are in, folders and file names cannot have spaces
-prefix = "photo" #Prefix to every image number(as in the "photo" in photo1), leave blank if there is none
-suffix = "" #Suffix to every image (as in the "photo" in 1photo), leave blank if there is none
-fileExtension = "jpg" #The file extension of all of your photos
-horizontalRes = 1600 #Horizontal resolution for the photos' display, make sure this is a whole number!
-verticalRes = 900 #Vertical resolution for the photos' display, make sure this is a whole number!
-renameTo = "_GOOD" #The suffix that pressing m will add to the file name
-#Once these are done you're all set!
+
+settingsPath = list(os.path.dirname(os.path.abspath(__file__))) #This turns all the backslashes in the path into foreward slashes
+for x in range(len(settingsPath)):
+    if settingsPath[x] == "\\":
+        settingsPath[x] = "/"
+settingsPath = ''.join(settingsPath) + "/Setup.txt"
+setupFile = open(settingsPath, "r")
+s = setupFile.readlines()
+
+imgNum = int(s[3].rstrip()) #The rstrip removes newlines that are attached to everything
+imagePath = s[7].rstrip()
+prefix = s[11].rstrip()
+suffix = s[15].rstrip()
+fileExtension = s[19].rstrip()
+horizontalRes = int(s[23].rstrip())
+verticalRes = int(s[27].rstrip())
+renameTo = s[31].rstrip()
+
+
 
 imagePath = list(imagePath) #This bit ensures that the file path will work whether or not there is a / at the end of the path, so "C:/ExamplePath/Photos/"
 if imagePath[len(imagePath)-1] == "/":
     imagePath.pop()
-for x in range(len(imagePath)): #This corrects for backslashes used in the image path
+for x in range(len(imagePath)): #This corrects for backslashes used in the image folder path
     if imagePath[x] == "\\":
         imagePath[x] = "/"
 imagePath = ''.join(imagePath)
-
-
-
-
 
 fullPath = "{}/{}{}{}.{}".format(imagePath, prefix,  str(imgNum), suffix, fileExtension) #Creates the full path for each photo
 
@@ -38,6 +43,7 @@ path = ''.join(path)
 icon = tk.PhotoImage(file=f"{path}/ScrambledRubiks-Emblem.png")
 win.iconphoto(True,icon)
 
+print(fullPath)
 image1 = Image.open(fullPath) #These prepare the images for proper display
 image1 = image1.resize((int(2544/2), int(1696/2)), Image.LANCZOS) 
 ph = ImageTk.PhotoImage(image1)

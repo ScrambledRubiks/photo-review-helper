@@ -1,0 +1,34 @@
+Edit the numbers below to match your photos.
+
+Image Number:
+1
+Number the images start at. This will be the 1 in "photo_1" or whatever the lowest-numbered photo you want to be included.
+
+Image Path:
+C:/ExamplePath/Photos
+Full path of the folder the images are in, folders and file names cannot have spaces
+
+Image Prefix:
+photo
+Prefix to every image number(as in the "photo" in photo1), leave blank if there is none
+
+Image Suffix:
+
+Suffix to every image (as in the "photo" in 1photo), leave blank if there is none
+
+File Extension:
+jpg
+The file extension for all of your photos
+
+Horizontal Resolution:
+1600
+The horizontal resolution that your photos will be displayed at. Make sure this is a whole number!
+
+Vertical Resolution:
+900
+The vertical resolution that your photos will be displayed at. Make sure this is a whole number!
+
+Rename Photo To:
+_GOOD
+The suffix that pressing m will add to the file name
+Once these are done, you should be able to run the program without troubles!
