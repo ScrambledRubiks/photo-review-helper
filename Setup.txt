@@ -22,12 +22,11 @@ The file extension for all of your photos
 
 Horizontal Resolution:
 1600
-The horizontal resolution that your photos will be displayed at. Make sure this is a whole number!
+The horizontal resolution that your photos will be displayed at.
 
 Vertical Resolution:
 900
-The vertical resolution that your photos will be displayed at. Make sure this is a whole number!
-
+The vertical resolution that your photos will be displayed at.
 Rename Photo To:
 _GOOD
 The suffix that pressing m will add to the file name
