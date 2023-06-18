@@ -1,24 +1,12 @@
 Edit the numbers below to match your photos.
 
-Image Number:
-1
-Number the images start at. This will be the 1 in "photo_1" or whatever the lowest-numbered photo you want to be included.
-
 Image Path:
 C:/ExamplePath/Photos
 Full path of the folder the images are in, folders and file names cannot have spaces
 
-Image Prefix:
-photo
-Prefix to every image number(as in the "photo" in photo1), leave blank if there is none
-
-Image Suffix:
-
-Suffix to every image (as in the "photo" in 1photo), leave blank if there is none
-
 File Extension:
 jpg
-The file extension for all of your photos
+The file extension for all of your photos(Can be .png, .jpg, .jpeg, .gif). If you would like another file extension, go to line 50 of the Python file and add it.
 
 Horizontal Resolution:
 1600
