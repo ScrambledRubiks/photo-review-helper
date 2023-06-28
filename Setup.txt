@@ -1,4 +1,4 @@
-Edit the numbers below to match your photos.
+Edit the lines below to match your photos. Please do not add or remove lines as this will cause things to break!
 
 Image Path:
 C:/ExamplePath/Photos
